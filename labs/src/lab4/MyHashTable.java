@@ -1,4 +1,4 @@
-package main;
+package lab4;
 
 import dataStructures.HashTable;
 
@@ -18,7 +18,7 @@ public class MyHashTable extends HashTable {
         Object elementToUpdate = get(theKey);
 
         if (elementToUpdate != null) {
-            deleteUsingRehash(theKey);
+            delete(theKey);
             put(theNewKey, elementToUpdate);
             return elementToUpdate;
         }
@@ -27,16 +27,12 @@ public class MyHashTable extends HashTable {
     }
 
     public void delete(Object theKey) {
-        deleteUsingRehash(theKey);
-    }
-
-    private void deleteUsingRehash(Object theKey) {
         if (get(theKey) == null) return;
 
         java.util.ArrayList<Object> keys = new java.util.ArrayList<>();
         java.util.ArrayList<Object> values = new java.util.ArrayList<>();
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < divisor; i++) {
             Object testKey = i;
             Object value = get(testKey);
             if (value != null && !testKey.equals(theKey)) {
