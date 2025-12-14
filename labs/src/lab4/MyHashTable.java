@@ -1,6 +1,7 @@
 package lab4;
 
 import dataStructures.HashTable;
+
 import java.util.ArrayList;
 
 public class MyHashTable extends HashTable {
@@ -28,12 +29,12 @@ public class MyHashTable extends HashTable {
     }
 
     public void delete(Object theKey) {
-        if (get(theKey) == null) return;
+        if(get(theKey)== null) return;
 
         ArrayList<Object> keys = new ArrayList<>();
         ArrayList<Object> values = new ArrayList<>();
 
-        for (int i = 0; i < divisor; i++) {
+        for (int i = 1; i <= divisor; i++) {
             Object testKey = i;
             Object value = get(testKey);
             if (value != null && !testKey.equals(theKey)) {
@@ -45,6 +46,7 @@ public class MyHashTable extends HashTable {
         for (int i = 0; i < divisor; i++) {
             table[i] = null;
         }
+
         size = 0;
 
         for (int i = 0; i < keys.size(); i++) {
