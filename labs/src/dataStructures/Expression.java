@@ -181,11 +181,11 @@ public class Expression extends LinkedBinaryTree {
         return result.toString().trim();
     }
     private int priority(char operator) {
-        switch (operator) {
-            case '+': case '-': return 1;
-            case '*': case '/': return 2;
-            case '^': return 3;
-        }
-        return -1;
+        return switch (operator) {
+            case '+', '-' -> 1;
+            case '*', '/' -> 2;
+            case '^' -> 3;
+            default -> -1;
+        };
     }
 }
